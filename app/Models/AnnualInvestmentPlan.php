@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes; 
 
-
 class AnnualInvestmentPlan extends Model
 {
     //
@@ -32,6 +31,8 @@ class AnnualInvestmentPlan extends Model
 
     protected $dates = ['deleted_at'];
 
-    //to be continued
+    public function ppmps(){
+        return $this->hasMany(ProjectProcurementManagementPlan::class, 'parent_id');
+    }
     
 }

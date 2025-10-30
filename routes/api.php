@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\AnnualInvestmentPlanController;
+use App\Http\Controllers\Api\ProjectProcurementManagmentPlanController;
 
 // Public Routes
 Route::post('/auth/login', [AuthController::class, 'login']); // No prefix needed here
@@ -30,8 +31,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('aip/{id}', [AnnualInvestmentPlanController::class, 'show']);
     Route::put('aip/{id}', [AnnualInvestmentPlanController::class, 'update']);
     
+    //ppmp
+    Route::get('ppmp', [ProjectProcurementManagmentPlanController::class, 'index']);
+    Route::post('ppmp', [ProjectProcurementManagmentPlanController::class, 'store']);
+    Route::get('ppmp/{id}', [ProjectProcurementManagmentPlanController::class, 'show']);
+    Route::put('ppmp/{id}', [ProjectProcurementManagmentPlanController::class, 'update']);
 
-    
     // Protected example route
     Route::get('/protected-example', function (Illuminate\Http\Request $request) {
         return ['message' => 'You are authenticated', 'user' => $request->user()];
