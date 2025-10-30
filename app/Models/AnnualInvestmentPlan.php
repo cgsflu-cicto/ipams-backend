@@ -27,6 +27,7 @@ class AnnualInvestmentPlan extends Model
         'cc_adaptation',
         'cc_mitigation',
         'cc_topology_code',
+         'type',
     ];
 
     protected $dates = ['deleted_at'];

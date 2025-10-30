@@ -43,7 +43,7 @@ class AnnualInvestmentPlanController extends Controller
             'aip_code' => 'required|string|max:255|unique:annual_investment_plans,aip_code',
             'ppa' => 'required|string',
             'office_id' => 'required|exists:offices,id',
-            'aip_year' => 'nullable|numeric|max:4',
+            'aip_year' => 'nullable|numeric|digits:4',
             'start_date' => 'nullable|date',
             'completion_date' => 'nullable|date|after_or_equal:start_date',
             'expected_outputs' => 'nullable|string',
@@ -54,6 +54,7 @@ class AnnualInvestmentPlanController extends Controller
             'cc_adaptation' => 'nullable|string|max:255',
             'cc_mitigation' => 'nullable|string|max:255',
             'cc_topology_code' => 'nullable|string|max:255',
+            'type' => ['required', 'string', 'in:Regular,Supplemental'],
         ]);
 
         // Optional: Only Admin or Planning can create AIPs
@@ -114,6 +115,7 @@ class AnnualInvestmentPlanController extends Controller
             'cc_adaptation' => ['nullable', 'string'],
             'cc_mitigation' => ['nullable', 'string'],
             'cc_topology_code' => ['nullable', 'string', 'max:50'],
+            'type' => ['required', 'string', 'in:Regular,Supplemental'],
         ]);
 
         $aip->update($validated);
